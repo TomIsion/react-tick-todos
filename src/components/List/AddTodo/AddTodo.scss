@@ -1,0 +1,65 @@
+.add-todo-container {
+  height: 36px;
+  margin-top: 10px;
+  padding-left: 12px;
+  padding-right: 100px;
+  outline: 0;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, .14);
+  border-radius: 2px;
+  font-size: 14px;
+  cursor: text;
+  position: relative;
+
+  input[type=text] {
+    display: block;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .add-todo-plus-container {
+    position: absolute;
+    width: 100px;
+    height: 36px;
+    right: 0;
+    top: 0;
+    cursor: auto;
+
+    > * {
+      width: 24px;
+      height: 36px;
+      margin-left: 12px;
+      box-sizing: border-box;
+      padding-top: 6px;
+      float: left;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        height: 40%;
+        width: 1px;
+        background-color: rgba(0, 0, 0, 0.34);
+        left: -6px;
+        top: 30%;
+      }
+
+      &:first-of-type {
+        margin-left: 0;
+
+        &:before {
+          display: none;
+        }
+      }
+
+      > svg {
+        fill: rgba(0, 0, 0, 0.34);
+        cursor: pointer;
+
+        &:hover {
+          fill: rgba(0, 0, 0, 0.64);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.list-todos {
+  li {
+    height: 38px;
+    line-height: 38px;
+
+    &:hover {
+      background-color: #f3f3f3;
+    }
+
+    p {
+      color: rgba(0, 0, 0, .85);
+      font-size: 14px;
+    }
+  }
+}

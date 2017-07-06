@@ -1,0 +1,140 @@
+.header-navigation {
+  .icon-menu {
+    float: left;
+    width: 36px;
+    height: 36px;
+    padding-top: 10px;
+    box-sizing: border-box;
+  }
+
+  .header-container {
+    height: 36px;
+
+    .task-actions {
+      float: right;
+      width: 58px;
+      height: 36px;
+      padding-top: 6px;
+      box-sizing: border-box;
+
+      svg {
+        fill: rgba(0, 0, 0, .54);
+      }
+
+      > * {
+        float: left;
+        width: 24px;
+        cursor: pointer;
+      }
+
+      .show-finished {
+        &:hover {
+          svg {
+            fill: rgba(0, 0, 0, .84);
+          }
+        }
+      }
+      
+      .sort-change {
+        position: relative;
+        margin-right: 10px;
+
+        .display-icon {
+          width: 24px;
+          position: relative;
+
+          &:hover {
+            svg {
+              fill: rgba(0, 0, 0, .84);
+            }
+          }
+        }
+
+        .sort-panel {
+          position: absolute;
+          width: 127px;
+          padding: 5px 0;
+          background-color: #fff;
+          box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 3px 16px rgba(0,0,0,.16);
+          right: -10px;
+          top: 35px;
+
+          &:after, &:before {
+            content: '';
+            right: 12px;
+            border-right: solid 9px transparent;
+            border-left: solid 9px transparent;
+            position: absolute;
+          }
+
+          &:before {
+            border-bottom: solid 9px rgba(0,0,0,.08);
+            top: -10px;
+          }
+
+          &:after {
+            top: -9px;
+            border-bottom: solid 9px #fff;
+          }
+
+          > div {
+            height: 36px;
+            line-height: 36px;
+            padding: 0 19px;
+
+            &:hover {
+              background-color: #eee;
+            }
+
+            svg {
+              vertical-align: middle;
+              fill: rgba(0, 0, 0, .54);         
+            }
+
+            span {
+              color: rgba(0, 0, 0, .85);
+              font-size: 13px;
+              margin-left: 12px;
+            }
+
+            &.chosen {
+              span {
+                color: #617fde;
+              }
+
+              svg {
+                fill: #617fde;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    h1 {
+      height: 36px;
+      line-height: 36px;
+      padding-right: 72px;
+      font-size: 22px;
+      color: rgba(0, 0, 0, .85);
+    }
+  }
+}
+
+.sort-panel-enter {
+  opacity: 0.01;
+}
+
+.sort-panel-enter.sort-panel-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in;
+}
+
+.sort-panel-leave {
+  opacity: 1;
+}
+
+.sort-panel-leave.sort-panel-leave-active {
+  opacity: 0.01;
+  transition: opacity 100ms ease-in;
+}
