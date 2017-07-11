@@ -1,0 +1,32 @@
+.panel-component {
+  padding: 5px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 3px 16px rgba(0,0,0,.16);
+  z-index: 99;
+
+  &:after, &:before {
+    content: '';
+    border-right: solid 9px transparent;
+    border-left: solid 9px transparent;
+    position: absolute;
+  }
+
+  &:before {
+    border-bottom: solid 9px rgba(0,0,0,.08);
+    top: -10px;
+  }
+
+  &:after {
+    top: -9px;
+    border-bottom: solid 9px #fff;
+  }
+
+  > * {
+    padding: 0 15px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+    }
+  }
+}

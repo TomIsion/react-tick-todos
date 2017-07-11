@@ -1,0 +1,156 @@
+.calendar {
+  width: 230px;
+  padding: 20px;
+  box-sizing: border-box;
+
+  table {
+    width: 189px;
+    margin: 0 auto;
+    color: rgba(0, 0, 0, .54);
+    font-size: 12px;
+
+    caption {
+      height: 28px;
+      line-height: 28px;
+      // display: block;
+      // Q：这里不能写 display: block;
+      text-align: center;
+
+      > i {
+        width: 24px;
+        height: 24px;
+        float: left;
+        margin-top: 2px;
+        cursor: pointer;
+
+        &:last-of-type {
+          float: right;
+        }
+
+        svg {
+          cursor: pointer;
+          fill: rgba(0, 0, 0, .54);
+
+          &:hover {
+            fill: rgba(0, 0, 0, .85);
+          }
+        }
+      }
+
+      div.info-container {
+        padding: 0 25px;
+        height: 28px;
+        line-height: 28px;
+        cursor: pointer;
+
+        span:first-of-type {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    tr {
+      height: 27px;
+
+      td {
+        width: 27px;
+        height: 27px;
+        line-height: 27px;
+        text-align: center;
+        border-radius: 50%;
+
+        &.current {
+          color: rgba(0, 0, 0, .85);
+        }
+
+        &.today-chosen {
+          color: #617fde;
+        }
+
+        &.chosen {
+          color: #fff;
+          background-color: #617fde;
+        }
+      }
+    }
+
+    tbody {
+      td {
+        cursor: pointer;
+
+        &:hover {
+          background-color: #eee;
+        }
+
+        &.chosen:hover {
+          background-color: #617fde;
+        }
+      }
+    }
+
+    &.month-cal-container {
+      border-collapse: separate;
+      border-spacing: 8px 5px;
+      
+      caption {
+        position: relative;
+
+        > i {
+          position: absolute;
+          float: none;          
+          top: 0;
+          left: 0;
+
+          &:last-of-type {
+            float: none;
+            right: 0;
+            left: auto;
+          }
+        }
+
+        div.info-container {
+          overflow: hidden;
+          padding: 0;
+          margin: 0 25px;
+          position: relative;
+
+          div {
+            width: 300%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            // transition: transform 200ms linear 50ms;
+
+            span {
+              width: 11.111%;
+              float: left;
+              text-align: center;
+              margin-right: 0;
+
+              &.chosen {
+                color: #617fde;
+              }
+            }
+          }
+        }
+      }
+
+      tr {
+        height: 36px;
+
+        td {
+          width: 36px;
+          height: 36px;
+          color: rgba(0, 0, 0, .85);
+          text-align: center;
+          line-height: 36px;
+          border-radius: 18px;
+
+          &.chosen {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

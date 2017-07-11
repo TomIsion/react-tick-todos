@@ -3,6 +3,13 @@ import PropTypes from 'prop-types'
 
 import './AddTodo.css'
 
+import Panel from '../../Common/Panel/Panel'
+import PriorityPanel from '../../Common/PriorityPanel/PriorityPanel'
+
+const arrSvgPriority = [
+  <svg viewBox="-4 -8 24 24" width="24px" height="24px"><circle cx="3" cy="10" r="1"></circle><circle cx="8" cy="10" r="1"></circle><path d="M3-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1zM13-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1z"></path><circle cx="13" cy="10" r="1"></circle><path d="M8-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1z"></path></svg>
+]
+
 class AddTodo extends Component {
   constructor(props) {
     super(props)
@@ -10,6 +17,11 @@ class AddTodo extends Component {
     this.state = {
       strTodo: '',
       singleHighLight: false,
+    }
+
+    this.plusInfo = {
+      priorityLevel: -1,
+      endTime: null,
     }
 
     this.changeSingleHighLight = this.changeSingleHighLight.bind(this)
@@ -46,7 +58,13 @@ class AddTodo extends Component {
       const value = e.target.value.trim()
       this.props.createNewTodo({
         summarize: value,
+        ...this.plusInfo,
       })
+
+      this.plusInfo = {
+        priorityLevel: -1,
+        endTime: null,
+      }
     }
   }
   
@@ -79,13 +97,9 @@ class AddTodo extends Component {
             <div className="calender-panel"></div>
           </div>
           <div className="priority-container">
-            <svg width="24px" height="24px" viewBox="-4 -8 24 24">
-              <circle cx="3" cy="10" r="1"></circle>
-              <circle cx="8" cy="10" r="1"></circle>
-              <path d="M3-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1zM13-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1z"></path>
-              <circle cx="13" cy="10" r="1"></circle>
-              <path d="M8-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1z"></path>
-            </svg>
+            <PriorityPanel
+              handleChangePriority={ newLevel => this.plusInfo.priorityLevel = newLevel }
+            />
           </div>
           <div className="archive-container">
             <svg width="24px" height="24px" viewBox="0 -7 24 24">

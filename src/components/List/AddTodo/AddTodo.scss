@@ -51,15 +51,6 @@
           display: none;
         }
       }
-
-      > svg {
-        fill: rgba(0, 0, 0, 0.34);
-        cursor: pointer;
-
-        &:hover {
-          fill: rgba(0, 0, 0, 0.64);
-        }
-      }
     }
   }
 }

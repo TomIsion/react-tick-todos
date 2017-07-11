@@ -1,0 +1,74 @@
+.priority-panel {
+  > svg {
+    fill: rgba(0, 0, 0, 0.34);
+    cursor: pointer;
+
+    &:hover {
+      fill: rgba(0, 0, 0, 0.64);
+    }
+  }
+
+  .priority-wrapper {
+    width: 127px;
+    position: absolute;
+    right: -50px;
+    top: 38px;
+
+    &:before, &:after {
+      left: 55px;
+    }
+
+    > div {
+      height: 36px;
+      line-height: 36px;
+      color: rgba(0,0,0,.85);
+      font-size: 13px;
+
+      &.chosen span {
+        color: #617fde;
+      }
+
+      > div {
+        height: 24px;
+        width: 24px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 12px;
+      }
+
+      &.priority-high svg {
+        fill: #ff3180;
+      }
+
+      &.priority-middle svg {
+        fill: #ffc817;
+      }
+
+      &.priority-low svg {
+        fill: #617fde;
+      }
+
+      &.priority-none svg {
+        fill: rgba(0, 0, 0, 0.34);
+      }
+    }
+  }
+}
+
+.priority-wrapper-enter {
+  opacity: 0.01;
+}
+
+.priority-wrapper-enter.priority-wrapper-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in;
+}
+
+.priority-wrapper-leave {
+  opacity: 1;
+}
+
+.priority-wrapper-leave.priority-wrapper-leave-active {
+  opacity: 0.01;
+  transition: opacity 100ms ease-in;
+}
