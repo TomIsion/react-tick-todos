@@ -96,6 +96,7 @@ class YearMonthCalendar extends Component {
     const {
       year: defaultYear,
       month,
+      style,
     } = this.props
 
     const {
@@ -107,6 +108,7 @@ class YearMonthCalendar extends Component {
     return (
       <table
         className="month-cal-container"
+        style={ style }
       >
         <caption>
           <i
@@ -160,8 +162,10 @@ class YearMonthCalendar extends Component {
               }
               return pre
             }, [])
-            .map(item =>
-              <tr>
+            .map((item, index) =>
+              <tr
+                key={ `${year}-${index}` }
+              >
                 {
                   item.map(td =>
                     <td
@@ -169,6 +173,7 @@ class YearMonthCalendar extends Component {
                       className={ cln({
                         chosen: td === month + 1 && year === defaultYear
                       }) }
+                      key={ `${year}-${td}` }
                     >{ `${td}月` }</td>
                   )
                 }

@@ -1,0 +1,44 @@
+.calendar-panel {
+  .title {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+
+    > svg {
+      fill: rgba(0, 0, 0, 0.34);
+
+      &:hover {
+        fill: rgba(0, 0, 0, 0.64);
+      }
+    }
+
+    &.chosen {
+      svg {
+        fill: #617fde;
+      }      
+    }
+
+    span {
+      font-size: 12px;
+      position: absolute;
+      top: 3px;
+      right: 0;
+      transform: scale(.7);
+      text-align: center;
+      width: 100%;
+      color: #617fde;
+    }
+  }
+
+  .calendar-wrapper {
+    width: 230px;
+    position: absolute;
+    right: -100px;
+    top: 38px;
+
+    &:before, &:after {
+      left: 109px;
+    }
+  }
+}

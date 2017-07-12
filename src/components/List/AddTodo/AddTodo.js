@@ -5,10 +5,7 @@ import './AddTodo.css'
 
 import Panel from '../../Common/Panel/Panel'
 import PriorityPanel from '../../Common/PriorityPanel/PriorityPanel'
-
-const arrSvgPriority = [
-  <svg viewBox="-4 -8 24 24" width="24px" height="24px"><circle cx="3" cy="10" r="1"></circle><circle cx="8" cy="10" r="1"></circle><path d="M3-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1zM13-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1z"></path><circle cx="13" cy="10" r="1"></circle><path d="M8-3c-.6 0-1 .4-1 1v8c0 .5.4 1 1 1s1-.4 1-1v-8c0-.5-.4-1-1-1z"></path></svg>
-]
+import CalendarPanel from '../../Common/CalendarPanel/CalendarPanel'
 
 class AddTodo extends Component {
   constructor(props) {
@@ -90,11 +87,9 @@ class AddTodo extends Component {
           }
         >
           <div className="calender-container">
-            <svg width="24px" height="24px" viewBox="0 -7 24 24">
-              <path d="M19-2h-2v-2h-1v2H8v-2H7v2H5c-.6 0-1 .5-1 1v12.5c0 .8.7 1.5 1.5 1.5h13c.8 0 1.5-.7 1.5-1.5V-1c0-.6-.4-1-1-1zm0 13.5c0 .3-.2.5-.5.5h-13c-.3 0-.5-.2-.5-.5V-1h14v12.5z"></path>
-              <path d="M7 1h1v1H7zM7 4h1v1H7zM16 1h1v1h-1zM16 4h1v1h-1zM10 1h1v1h-1zM10 4h1v1h-1zM13 1h1v1h-1zM13 4h1v1h-1zM7 7h1v1H7zM10 7h1v1h-1zM13 7h1v1h-1z"></path>
-            </svg>
-            <div className="calender-panel"></div>
+            <CalendarPanel 
+              handleChangeCalendar={ newDate => this.plusInfo.newDate }
+            />
           </div>
           <div className="priority-container">
             <PriorityPanel

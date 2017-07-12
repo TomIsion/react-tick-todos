@@ -10,6 +10,7 @@ import Navigation from '../../components/List/Navigation/Navigation'
 import AddTodo from '../../components/List/AddTodo/AddTodo'
 import ListTodos from '../../components/List/ListTodos/ListTodos'
 import Calendar from '../../components/Common/Calendar/Calendar'
+import TextPanel from '../../components/Common/TextPanel/TextPanel'
 
 class ListPage extends Component {
   render() {
@@ -38,8 +39,6 @@ class ListPage extends Component {
         <main>
           <ListTodos
             {...header}
-          />
-          <Calendar
           />
         </main>
       </div>

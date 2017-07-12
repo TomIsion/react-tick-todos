@@ -67,7 +67,7 @@ class Calendar extends Component {
       year: date.getFullYear(),
       month: date.getMonth(),
       // 代表是呈现单月详细的日历还是只是呈现月份相关
-      singleDetail: false,
+      singleDetail: true,
     }
 
     this.handleMonthClick = this.handleMonthClick.bind(this)
@@ -86,6 +86,8 @@ class Calendar extends Component {
       month,
       date: `${year}-${month + 1}-${day}`,
     })
+
+    this.props.handleClick(`${year}-${month + 1}-${day}`)
   }
 
   // 年月日历面板模块选择某个月份
@@ -189,93 +191,95 @@ class Calendar extends Component {
 
     return (
       <div className="calendar">
-        {
-          singleDetail ?
-          <table>
-            <caption
-              className="calendar-nav"
+        <table
+          style={ !singleDetail ? { display: 'none' } : {} }
+        >
+          <caption
+            className="calendar-nav"
+          >
+            <i
+              onClick={ () => this.handleMonthChange(-1) }
             >
-              <i
-                onClick={ () => this.handleMonthChange(-1) }
+              <svg
+                width="100%" height="100%"
+                viewBox="8 -8 24 24"
               >
-                <svg
-                  width="100%" height="100%"
-                  viewBox="8 -8 24 24"
-                >
-                  <path d="M22 9.7L16.3 4 22-1.7l.7.7-5 5 5 5z"></path>
-                </svg>
-              </i>
-              <i
-                onClick={ () => this.handleMonthChange(1) }
+                <path d="M22 9.7L16.3 4 22-1.7l.7.7-5 5 5 5z"></path>
+              </svg>
+            </i>
+            <i
+              onClick={ () => this.handleMonthChange(1) }
+            >
+              <svg
+                width="100%" height="100%"
+                viewBox="8 -8 24 24"
               >
-                <svg
-                  width="100%" height="100%"
-                  viewBox="8 -8 24 24"
-                >
-                  <path d="M18 9.7l-.7-.7 5-5-5-5 .7-.7L23.7 4z"></path>
-                </svg>
-              </i>
-              <div
-                className="info-container"
-                onClick={ () => this.setState({ singleDetail: false, }) }
-              >
-                <span>{ month2Chinese[month] }</span>
-                <span>{ year }</span>
-              </div>
-            </caption>
-            <thead>
-              <tr>
-                <td>日</td>
-                <td>一</td>
-                <td>二</td>
-                <td>三</td>
-                <td>四</td>
-                <td>五</td>
-                <td>六</td>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                arr.reduce((pre, cur) => {
-                  if (pre[pre.length - 1] && pre[pre.length - 1].length < 7) {
-                    pre[pre.length - 1].push(
-                      <td
-                        className={ cln({
-                          current: cur.type === 0,
-                          'today-chosen': cur.singleTodayChosen,
-                          'chosen': cur.chosen,
-                        }) }
-                        onClick={ () => this.handleDayClick(cur) }
-                      >
-                        {cur.day}
-                      </td>
-                    )
-                  } else {
-                    pre[pre.length] = [
-                      <td
-                        className={ cln({
-                          current: cur.type === 0,
-                          'today-chosen': cur.singleTodayChosen,
-                          'chosen': cur.chosen,
-                        }) }
-                        onClick={ () => this.handleDayClick(cur) }
-                      >
-                        {cur.day}
-                      </td>
-                    ]
-                  }
-                  return pre
-                }, [])
-                .map(item => <tr>{item}</tr>)
-              }
-            </tbody>
-          </table> :
-          <YearMonthCalendar
-            year={ year }
-            month={ month }
-            handleMonthChange={ this.handleMonthClick }
-          />
-        }
+                <path d="M18 9.7l-.7-.7 5-5-5-5 .7-.7L23.7 4z"></path>
+              </svg>
+            </i>
+            <div
+              className="info-container"
+              onClick={ () => this.setState({ singleDetail: false, }) }
+            >
+              <span>{ month2Chinese[month] }</span>
+              <span>{ year }</span>
+            </div>
+          </caption>
+          <thead>
+            <tr>
+              <td>日</td>
+              <td>一</td>
+              <td>二</td>
+              <td>三</td>
+              <td>四</td>
+              <td>五</td>
+              <td>六</td>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              arr.reduce((pre, cur) => {
+                if (pre[pre.length - 1] && pre[pre.length - 1].length < 7) {
+                  pre[pre.length - 1].push(
+                    <td
+                      className={ cln({
+                        current: cur.type === 0,
+                        'today-chosen': cur.singleTodayChosen,
+                        'chosen': cur.chosen,
+                      }) }
+                      onClick={ () => this.handleDayClick(cur) }
+                      key={ `${cur.type}-${cur.day}` }
+                    >
+                      {cur.day}
+                    </td>
+                  )
+                } else {
+                  pre[pre.length] = [
+                    <td
+                      className={ cln({
+                        current: cur.type === 0,
+                        'today-chosen': cur.singleTodayChosen,
+                        'chosen': cur.chosen,
+                      }) }
+                      onClick={ () => this.handleDayClick(cur) }
+                      key={ `${cur.type}-${cur.day}` }
+                    >
+                      {cur.day}
+                    </td>
+                  ]
+                }
+                return pre
+              }, [])
+              .map((item, index) => <tr key={ `${month}-${index}` }>{item}</tr>)
+            }
+          </tbody>
+        </table>
+        <YearMonthCalendar
+          year={ year }
+          month={ month }
+          handleMonthChange={ this.handleMonthClick }
+          style={ singleDetail ? { display: 'none' } : {} }
+        />
       </div>
     )
   }

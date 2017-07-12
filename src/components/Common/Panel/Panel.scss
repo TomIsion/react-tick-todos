@@ -1,5 +1,4 @@
 .panel-component {
-  padding: 5px 0;
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 3px 16px rgba(0,0,0,.16);
   z-index: 99;
@@ -20,13 +19,22 @@
     top: -9px;
     border-bottom: solid 9px #fff;
   }
+}
 
-  > * {
-    padding: 0 15px;
-    cursor: pointer;
+.default-enter {
+  opacity: 0.01;
+}
 
-    &:hover {
-      background-color: #eee;
-    }
-  }
+.default-enter.default-enter-active {
+  opacity: 1;
+  transition: opacity 100ms ease-in;
+}
+
+.default-leave {
+  opacity: 1;
+}
+
+.default-leave.default-leave-active {
+  opacity: 0.01;
+  transition: opacity 100ms ease-in;
 }

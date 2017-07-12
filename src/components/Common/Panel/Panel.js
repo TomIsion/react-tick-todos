@@ -10,9 +10,9 @@ class Panel extends Component {
     const {
       children,
       handleClick = () => {},
-      transitionName,
-      transitionEnterTimeout,
-      transitionLeaveTimeout,
+      transitionName = 'default',
+      transitionEnterTimeout = 100,
+      transitionLeaveTimeout = 100,
       chosenIndex = -1,
       className,
       isShow,
@@ -26,14 +26,17 @@ class Panel extends Component {
       >
       {
         isShow &&
-        <div key={0} className={ `${className} panel-component` }>
+        <div
+          key={0}
+          className={ `${className} panel-component` }
+        >
           {
             React.Children.map(children, (item, index) =>
               React.cloneElement(item, {
                 onClick: event => {
                   // 需要触发原组件本身的 click 事件
                   item.props.onClick && item.props.onClick.call(item, event)
-                  handleClick(item, index) 
+                  handleClick(event, index) 
                 },
                 className: index === chosenIndex ? `chosen ${item.props.className}` : item.props.className,
               }, item.props.children)

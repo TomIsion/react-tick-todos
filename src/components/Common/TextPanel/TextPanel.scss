@@ -1,0 +1,41 @@
+.text-panel {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, .85);
+
+  > .title {
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(221, 221, 221);    
+    text-align: center;
+    background-color: #fff;
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+
+    &.chosen {
+      border-color: rgb(97, 127, 222);
+      color: rgb(97, 127, 222);
+    }
+  }
+
+  .text-panel-inner {
+    position: absolute;
+    top: 29px;
+    left: 0;
+    width: 100%;
+
+    &:after, &:before {
+      display: none;
+    }
+
+    div {
+      height: 36px;
+      line-height: 36px;
+    }
+  }
+}
