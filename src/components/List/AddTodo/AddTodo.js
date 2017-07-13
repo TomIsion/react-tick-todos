@@ -62,6 +62,10 @@ class AddTodo extends Component {
         priorityLevel: -1,
         endTime: null,
       }
+
+      this.setState({
+        strTodo: '',
+      })
     }
   }
   

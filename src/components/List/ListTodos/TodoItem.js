@@ -6,11 +6,11 @@ const TodoItem = props => {
     </div>
     <div className="react-icon state-icon">
     </div>
-    <a href="">
+    <div className="info-line">
       <p>{ props.summarize }</p>
       <div className="finish-status"></div>
       <div className="time"></div>
-    </a>
+    </div>
     <div className="react-icon more-icon">
     </div>
   </li>
