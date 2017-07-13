@@ -41,6 +41,14 @@ class CalendarPanel extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.resetSingle !== this.props.resetSingle) {
+      this.setState({
+        date: undefined,
+      })
+    }
+  }
+
   componentDidMount() {
     document.body.addEventListener('click', this.handleGlobalClick)
   }
@@ -93,6 +101,7 @@ class CalendarPanel extends Component {
 
 CalendarPanel.propTypes = {
   handleChangeCalendar: PropTypes.func,
+  resetSingle: PropTypes.number,
 }
 
 export default CalendarPanel

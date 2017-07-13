@@ -52,6 +52,15 @@ class PriorityPanel extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.resetSingle !== nextProps.resetSingle) {
+      this.setState({
+        style: {},
+        chosenIndex: -1,
+      })
+    }
+  }
+
   componentDidMount() {
     document.body.addEventListener('click', this.handleGlobalClick)
   }
@@ -113,6 +122,7 @@ class PriorityPanel extends Component {
 
 PriorityPanel.propTypes = {
   handleChangePriority: PropTypes.func,
+  resetSingle: PropTypes.number,
 }
 
 export default PriorityPanel

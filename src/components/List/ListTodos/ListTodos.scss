@@ -15,6 +15,17 @@
       p {
         color: rgba(0, 0, 0, .85);
         font-size: 14px;
+        width: 100%;
+      }
+
+      > .time {
+        float: right;
+        color: rgba(0, 0, 0, .85);
+        font-size: 13px;
+
+        &.overtime {
+          color: rgb(253, 93, 95);
+        }
       }
     }
   }

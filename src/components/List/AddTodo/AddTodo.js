@@ -14,6 +14,7 @@ class AddTodo extends Component {
     this.state = {
       strTodo: '',
       singleHighLight: false,
+      resetSingle: null,
     }
 
     this.plusInfo = {
@@ -36,6 +37,11 @@ class AddTodo extends Component {
     }
   }
 
+  handleChangePlusInfo(single, info) {
+    this.plusInfo[~single ? 'priorityLevel' : 'endTime'] = info
+    this.domInput.focus()
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.singleHighLight !== this.state.singleHighLight && this.state.singleHighLight === true) {
       this.domInput.focus()
@@ -53,19 +59,23 @@ class AddTodo extends Component {
   handleKeyPress(e) {
     if (e.charCode == 13) {
       const value = e.target.value.trim()
-      this.props.createNewTodo({
-        summarize: value,
-        ...this.plusInfo,
-      })
 
-      this.plusInfo = {
-        priorityLevel: -1,
-        endTime: null,
+      if (value.length) {
+        this.props.createNewTodo({
+          summarize: value,
+          ...this.plusInfo,
+        })
+
+        this.plusInfo = {
+          priorityLevel: -1,
+          endTime: null,
+        }
+
+        this.setState({
+          strTodo: '',
+          resetSingle: Date.now(),
+        })
       }
-
-      this.setState({
-        strTodo: '',
-      })
     }
   }
   
@@ -73,6 +83,7 @@ class AddTodo extends Component {
     const {
       strTodo,
       singleHighLight,
+      resetSingle,
     } = this.state
 
     return (
@@ -92,12 +103,14 @@ class AddTodo extends Component {
         >
           <div className="calender-container">
             <CalendarPanel 
-              handleChangeCalendar={ newDate => this.plusInfo.newDate }
+              handleChangeCalendar={ newDate => this.handleChangePlusInfo(-1, newDate) }
+              resetSingle={ resetSingle }
             />
           </div>
           <div className="priority-container">
             <PriorityPanel
-              handleChangePriority={ newLevel => this.plusInfo.priorityLevel = newLevel }
+              handleChangePriority={ newLevel => this.handleChangePlusInfo(0, newLevel) }
+              resetSingle={ resetSingle }
             />
           </div>
           <div className="archive-container">

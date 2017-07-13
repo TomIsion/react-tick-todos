@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { date2Chinese } from './utils/time'
+
 const TodoItem = props => {
   return <li>
     <div className="react-icon move-icon">
@@ -7,9 +9,11 @@ const TodoItem = props => {
     <div className="react-icon state-icon">
     </div>
     <div className="info-line">
-      <p>{ props.summarize }</p>
+      {
+        date2Chinese(props.endTime)
+      }
       <div className="finish-status"></div>
-      <div className="time"></div>
+      <p>{ props.summarize }</p>      
     </div>
     <div className="react-icon more-icon">
     </div>
