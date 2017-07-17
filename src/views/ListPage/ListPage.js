@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createNewTodo, changeShowFinished, changeSortType } from './ListPageRedux'
+import { createNewTodo, changeShowFinished, changeSortType, changeTodoOrder } from './ListPageRedux'
 
 import './ListPage.css'
 
@@ -15,11 +15,11 @@ import TextPanel from '../../components/Common/TextPanel/TextPanel'
 class ListPage extends Component {
   render() {
     const {
+      list,      
       createNewTodo,
-      header,
-      nav,
       changeShowFinished,
       changeSortType,
+      changeTodoOrder,
     } = this.props
 
     return (
@@ -27,7 +27,7 @@ class ListPage extends Component {
         <header>
           <Navigation
             {
-              ...nav
+              ...list
             }
             changeShowFinished={ changeShowFinished }
             changeSortType={ changeSortType }
@@ -38,7 +38,8 @@ class ListPage extends Component {
         </header>
         <main>
           <ListTodos
-            {...header}
+            {...list}
+            changeTodoOrder={ changeTodoOrder }
           />
         </main>
       </div>
@@ -52,14 +53,15 @@ ListPage.propTypes = {
   createNewTodo: PropTypes.func,
   changeShowFinished: PropTypes.func,
   changeSortType: PropTypes.func,
+  changeTodoOrder: PropTypes.func,
 }
 
 // export default ListPage
 export default connect(state => ({
-  header: state.list.header,
-  nav: state.list.nav,
+  list: state.list,
 }), dispatch => ({
   createNewTodo: bindActionCreators(createNewTodo, dispatch),
   changeShowFinished: bindActionCreators(changeShowFinished, dispatch),
   changeSortType: bindActionCreators(changeSortType, dispatch),
+  changeTodoOrder: bindActionCreators(changeTodoOrder, dispatch),
 }))(ListPage)

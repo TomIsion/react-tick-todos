@@ -63,6 +63,14 @@
           > div {
             height: 36px;
             line-height: 36px;
+            color: rgba(0,0,0,.85);
+            font-size: 13px;
+            padding: 0 15px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #eee;
+            }
 
             svg {
               vertical-align: middle;

@@ -13,6 +13,7 @@ class ListTodos extends Component {
           this.props.arrTodos.map((item, index) =>
             <TodoItem
               key={`${index}-${item.id}`}
+              changeTodoOrder={ this.props.changeTodoOrder }
               { ...item }
             />
           )
@@ -24,6 +25,7 @@ class ListTodos extends Component {
 
 ListTodos.propTypes = {
   arrTodos: PropTypes.array,
+  changeTodoOrder: PropTypes.func,
 }
 
 export default ListTodos

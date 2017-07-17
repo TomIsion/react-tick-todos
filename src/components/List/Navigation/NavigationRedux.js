@@ -1,8 +1,3 @@
-const initialState = {
-  singleShowFinished: true,
-  singleSortType: 1,
-}
-
 // 是否呈现已完成
 const CHANGE_SHOW_FINISHED = 'CHANGE_SHOW_FINISHED'
 
@@ -26,7 +21,7 @@ export const changeSortType = payload => ({
   payload,
 })
 
-export default (state = initialState, action) => {
+export default (state, action) => {
   switch (action.type) {
     case CHANGE_SHOW_FINISHED:
       return {
