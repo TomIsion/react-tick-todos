@@ -1,5 +1,10 @@
 const initialState = {
-  arrTodos: []
+  arrTodos: [{
+    id: 1,
+    summarize: '这是一条测试数据',
+    priorityLevel: -1,
+    endTime: '2017-7-15',
+  }]
 }
 
 const ADD_COMMON_TODO = 'ADD_COMMON_TODO'

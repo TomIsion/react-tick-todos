@@ -3,6 +3,7 @@
     height: 38px;
     line-height: 38px;
     padding: 0 20px;
+    position: relative;
 
     &:hover {
       background-color: #f3f3f3;
@@ -16,6 +17,7 @@
         color: rgba(0, 0, 0, .85);
         font-size: 14px;
         width: 100%;
+        cursor: pointer;
       }
 
       > .time {
@@ -27,6 +29,38 @@
           color: rgb(253, 93, 95);
         }
       }
+    }
+
+    .move-icon {
+      display: none;
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      cursor: move;
+
+      > svg {
+        fill: rgba(0, 0, 0, .24);
+      }
+    }
+
+    .state-icon {
+      width: 14px;
+      height: 14px;
+      margin: 2px 0 0 4px;
+      float: left;
+      cursor: pointer;
+
+      > svg {
+        fill: rgba(0, 0, 0, .24);
+      }
+    }
+  }
+
+  li:hover {
+    .move-icon {
+      display: block;
     }
   }
 }
