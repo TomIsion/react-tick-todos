@@ -35,6 +35,13 @@
           color: rgb(253, 93, 95);
         }
       }
+
+      > .finish-status {
+        float: right;
+        width: 12px;
+        height: 100%;
+        margin-right: 5px;
+      }
     }
 
     .move-icon {

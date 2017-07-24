@@ -41,6 +41,29 @@ class TodoItem extends Component {
     event.preventDefault()
   }
 
+  componentDidMount() {
+    const percent = this.props.percent
+
+    if (this.finishedCanvas) {
+      // 渲染完成的饼图
+      const context = this.finishedCanvas.getContext('2d')
+
+      context.strokeStyle = '#c3c3c3'
+      context.fillStyle = '#e3e3e3'
+
+      context.beginPath()
+      context.arc(6, 6, 5, 0, Math.PI * 2, false)
+      context.stroke()
+      context.closePath()
+
+      context.beginPath()
+      context.moveTo(6, 6)
+      context.arc(6, 6, 5, - Math.PI / 2, Math.PI * 2 * percent - Math.PI / 2, false)
+      context.lineTo(6, 6)
+      context.fill()
+    }
+  }
+
   render() {
     const props = this.props
 
@@ -82,7 +105,11 @@ class TodoItem extends Component {
           {
             date2Chinese(props.endTime)
           }
-          <div className="finish-status"></div>
+          {
+            props.percent &&  <div className="finish-status">
+              <canvas width="12" height="12" ref={ ref => this.finishedCanvas = ref }></canvas>
+            </div>
+          }
           <p>{ props.summarize }</p>      
         </div>
         <div className="react-icon more-icon">

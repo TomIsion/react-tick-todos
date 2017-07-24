@@ -10,6 +10,7 @@ const initialState = {
     summarize: '这是第一条测试数据',
     priorityLevel: -1,
     endTime: '2017-7-15',
+    percent: 0.5,
   }, {
     id: 2,
     summarize: '这是第二条测试数据',
