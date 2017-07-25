@@ -1,0 +1,76 @@
+.calendar-text-panel {
+  float: left;
+  position: relative;
+  height: 100%;
+  width: 250px;
+  color: rgba(0 , 0, 0, .24);
+  fill: rgba(0 , 0, 0, .24);
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 1px;
+    background-color: rgba(0, 0, 0, .08);
+    top: 11px;
+    left: -15px;
+  }
+
+  &.overtime {
+    fill: #fd5d5f;
+    color: #fd5d5f;
+  }
+
+  &.after {
+    fill: #617fde;
+    color: #617fde;
+  }
+
+  .title {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+
+    > .icon-container {
+      float: left;
+      width: 24px;
+      height: 24px;
+      position: relative;
+      margin-top: 5.5px;
+
+      > svg {
+        // fill: rgba(0, 0, 0, 0.24);
+      }
+
+      span {
+        font-size: 12px;
+        position: absolute;
+        top: 3px;
+        right: 0;
+        transform: scale(.7);
+        text-align: center;
+        width: 100%;
+        color: #617fde;
+      }
+    }
+
+    > .plus-info {
+      float: left;
+      height: 25px;
+      line-height: 25px;
+      margin: 6px 0 0 10px;
+    }
+  }
+
+  .calendar-wrapper {
+    width: 230px;
+    position: absolute;
+    right: 100px;
+    top: 38px;
+
+    &:before, &:after {
+      left: 109px;
+    }
+  }
+}

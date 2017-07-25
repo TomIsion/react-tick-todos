@@ -22,8 +22,8 @@
   createTime: 创建时间,
   priorityLevel: 优先级（0,1,2,-1分别是高中低无）,
   endTime: 到期时间,
-  status: 当前状态,
-  type: 任务类型（描述类 -1 /子任务类 undefined）,
+  status: 当前状态（未完成 0 / 已完成 1）,
+  type: 任务类型（描述类 0 /子任务类 1）,
   percent: 任务完成百分比,
   details: {
     subTask: [

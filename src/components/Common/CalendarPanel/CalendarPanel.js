@@ -24,7 +24,7 @@ class CalendarPanel extends Component {
       isShow: false,
     })
 
-    this.props.handleChangeCalendar(date)
+    this.props.handleChangeCalendar && this.props.handleChangeCalendar(date)
   }
 
   handleTitleClick() {
@@ -63,9 +63,11 @@ class CalendarPanel extends Component {
       date,
     } = this.state
 
+    const { className } = this.props
+
     return (
       <div
-        className="calendar-panel"
+        className={ `calendar-panel ${className ? className : ''}` }
         ref={ ref => this.domCalendarPanel = ref }
       >
         <div
@@ -73,8 +75,6 @@ class CalendarPanel extends Component {
           onClick={ () => this.handleTitleClick() }
         >
           <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
             width="100%" height="100%"
             viewBox="0 -7 24 24"
           >
@@ -102,6 +102,7 @@ class CalendarPanel extends Component {
 CalendarPanel.propTypes = {
   handleChangeCalendar: PropTypes.func,
   resetSingle: PropTypes.number,
+  className: PropTypes.string,
 }
 
 export default CalendarPanel

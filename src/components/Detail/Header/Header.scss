@@ -1,0 +1,16 @@
+header {
+  box-sizing: border-box;
+  height: 60px;
+  background-color: #fdfdfd;
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+  padding: 12px 14px;
+
+  .icon-back {
+    float: left;
+    width: 20px;
+    height: 20px;
+    fill: rgba(0, 0, 0, .36);
+    margin-top: 7px;
+    cursor: pointer;
+  }
+}

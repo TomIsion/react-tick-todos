@@ -26,9 +26,7 @@ class ListPage extends Component {
       <div>
         <header>
           <Navigation
-            {
-              ...list
-            }
+            {...list}
             changeShowFinished={ changeShowFinished }
             changeSortType={ changeSortType }
           />
