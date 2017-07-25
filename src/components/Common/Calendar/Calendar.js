@@ -160,7 +160,7 @@ class Calendar extends Component {
         ...objPreviousMonthYear,
         day: i,
         type: -1,
-        singleTodayChosen: year === objNowDate.year && month === objNowDate.month && i === objNowDate.day,
+        singleTodayChosen: objPreviousMonthYear.year === objNowDate.year && objPreviousMonthYear.month === objNowDate.month && i === objNowDate.day,
         chosen: objPreviousMonthYear.year === objChosenDate.year && objPreviousMonthYear.month === objChosenDate.month && i === objChosenDate.day,
       })
     }
@@ -184,7 +184,7 @@ class Calendar extends Component {
         ...objNextMonthYear,
         day: k,
         type: 1,
-        singleTodayChosen: year === objNowDate.year && month === objNowDate.month && k === objNowDate.day,
+        singleTodayChosen: objNextMonthYear.year === objNowDate.year && objNextMonthYear.month === objNowDate.month && k === objNowDate.day,
         chosen: objNextMonthYear.year === objChosenDate.year &&  objNextMonthYear.month === objChosenDate.month && k === objChosenDate.day,
       })
     }
