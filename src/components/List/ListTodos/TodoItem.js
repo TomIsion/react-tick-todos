@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { date2Chinese } from './utils/time'
+import { date2DOM } from '../../../utils/time'
 
 const arrStylesOfSvg = [
   { fill: '#ff3180' },
@@ -109,7 +109,7 @@ class TodoItem extends Component {
         </div>
         <div className="info-line">
           {
-            date2Chinese(props.endTime)
+            date2DOM(props.endTime)
           }
           {
             props.percent &&  <div className="finish-status">

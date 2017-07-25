@@ -13,4 +13,16 @@ header {
     margin-top: 7px;
     cursor: pointer;
   }
+
+  .priority-panel {
+    float: right;
+    width: 24px;
+    height: 24px;
+    margin-top: 5px;
+    position: relative;
+
+    .priority-wrapper {
+      right: -50px;
+    }
+  }
 }

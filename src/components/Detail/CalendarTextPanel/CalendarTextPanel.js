@@ -6,6 +6,11 @@ import './CalendarTextPanel.css'
 import Calendar from '../../Common/Calendar/Calendar'
 import Panel from '../../Common/Panel/Panel'
 
+import {
+	date2Chinese,
+	date2Single,
+} from '../../../utils/time'
+
 class CaldenarTextPanel extends Component {
   constructor(props) {
     super(props)
@@ -24,7 +29,10 @@ class CaldenarTextPanel extends Component {
       isShow: false,
     })
 
-    this.props.handleChangeCalendar && this.props.handleChangeCalendar(date)
+    this.props.handleChangeCalendar && this.props.handleChangeCalendar({
+      id: this.props.id,
+      endDate: date,
+    })
   }
 
   handleTitleClick() {
@@ -61,7 +69,7 @@ class CaldenarTextPanel extends Component {
 
     return (
       <div
-        className={ `calendar-text-panel ${className ? className : ''}` }
+        className={ `calendar-text-panel ${className ? className : ''} ${ date2Single(date) === 1 ? 'after' : date2Single(date) === -1 ? 'overtime' : '' }` }
         ref={ ref => this.domCalendarTextPanel = ref }
       >
         <div
@@ -82,6 +90,8 @@ class CaldenarTextPanel extends Component {
           </div>
           <div className="plus-info">
 						{
+							date ? 
+							date2Chinese(date) :
 							'设置日期'
 						}
           </div>
@@ -101,6 +111,7 @@ class CaldenarTextPanel extends Component {
 }
 
 CaldenarTextPanel.propTypes = {
+  id: PropTypes.number,
   handleChangeCalendar: PropTypes.func,
   className: PropTypes.string,
 }

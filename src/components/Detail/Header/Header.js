@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import CalendarTextPanel from '../CalendarTextPanel/CalendarTextPanel'
 import FinishedCheckBox from '../FinishedCheckbox/FinishedCheckbox'
+import CalendarTextPanel from '../CalendarTextPanel/CalendarTextPanel'
+import PriorityPanel from '../../Common/PriorityPanel/PriorityPanel'
 
 import './Header.css'
 
 class Header extends Component {
   render() {
     const {
+      id,
       summarize,
       endTime,
       status,
       type,
       percent,
       priorityLevel,
+      changeTodoStatus,
+      changeTodoDate,
+      changeTodoPriority,
     } = this.props
 
     return (
@@ -29,13 +34,21 @@ class Header extends Component {
           </svg>
         </div>
         <FinishedCheckBox
-          status = { status }
-          type = { type }
+          id={ id }
+          status={ status }
+          type={ type }
+          handleClick={ changeTodoStatus }
         />
         <CalendarTextPanel
-          
+          id={ id }
+          date={ endTime }
+          handleChangeCalendar={ changeTodoDate }
         />
-        <div className="priority-container"></div>
+        <PriorityPanel
+          id={ id }
+          priorityLevel={ priorityLevel }
+          handleChangePriority={ changeTodoPriority }
+        />
       </header>
     )
   }

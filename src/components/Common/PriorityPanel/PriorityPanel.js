@@ -20,8 +20,8 @@ class PriorityPanel extends Component {
 
     this.state = {
       isShow: false,
-      style: {},
-      chosenIndex: -1,
+      style: this.props.priorityLevel !== undefined ? arrStylesOfSvg[this.props.priorityLevel] : {},
+      chosenIndex: this.props.priorityLevel !== undefined ? this.props.priorityLevel : -1,
     }
 
     this.handleItemClick = this.handleItemClick.bind(this)
@@ -41,7 +41,10 @@ class PriorityPanel extends Component {
       isShow: false,
     })
 
-    this.props.handleChangePriority(index === 3 ? -1 : index)
+    this.props.handleChangePriority && this.props.handleChangePriority({
+      id: this.props.id,
+      priorityLevel: index === 3 ? -1 : index,
+    })
   }
 
   handleGlobalClick(e) {
@@ -121,8 +124,10 @@ class PriorityPanel extends Component {
 }
 
 PriorityPanel.propTypes = {
+  id: PropTypes.number,
   handleChangePriority: PropTypes.func,
   resetSingle: PropTypes.number,
+  priorityLevel: PropTypes.number,
 }
 
 export default PriorityPanel

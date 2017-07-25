@@ -39,7 +39,10 @@ class FinishedCheckbox extends Component {
       status: this.state.status === 0 ? 1 : 0,
     })
 
-    this.props.handleClickCB && this.props.handleClickCB(this.state.status === 0 ? true : false)
+    this.props.handleClick && this.props.handleClick({
+      id: this.props.id,
+      status: this.state.status === 0 ? 1 : 0,
+    })
   }
   
   render() {
@@ -60,9 +63,10 @@ class FinishedCheckbox extends Component {
 }
 
 FinishedCheckbox.propTypes = {
+  id: PropTypes.number,
   status: PropTypes.number,
   type: PropTypes.number,
-  handleClickCB: PropTypes.func,
+  handleClick: PropTypes.func,
 }
 
 export default FinishedCheckbox

@@ -48,34 +48,72 @@ function dateFormat(strReg = 'YYYY/MM/DD', objPlus = {}, date = new Date()) {
 
 const date2Chinese = date => {
   if (!date) {
-    return 
+    return
   } else {
     const dateFinish = new Date(date)
     const numGap = dateFinish.getTime() - dateNow.getTime()
 
     if (numGap === 0) {
-      return <div className="time">今天</div>
+      return `今天，${dateFormat('M月D日', {}, dateFinish)}`
     } else if (numGap === 1000 * 60 * 60 * 24) {
-      return <div className="time">明天</div>
+      return `明天，${dateFormat('M月D日', {}, dateFinish)}`
     } else if (numGap === - 1000 * 60 * 60 * 24) {
-      return <div className="time overtime">昨天</div>
+      return `昨天，${dateFormat('M月D日', {}, dateFinish)}`
     } else if (numGap > 1000 * 60 * 60 * 24) {
-      return <div className="time">{
+      const arrWeekDay = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+
+      return `${arrWeekDay[dateFinish.getDay()]}，${
         dateFinish.getFullYear() === dateNow.getFullYear() ?
         dateFormat('M月D日', {}, dateFinish) :
         dateFormat('YYYY年M月D日', {}, dateFinish)
-      }</div>
+      }`
     } else {
-      return <div className="time overtime">{
+      const numBeforeDayCount = Math.abs(numGap / (1000 * 60 * 60 * 24))
+
+      return `${numBeforeDayCount}天前，${
         dateFinish.getFullYear() === dateNow.getFullYear() ?
         dateFormat('M月D日', {}, dateFinish) :
         dateFormat('YYYY年M月D日', {}, dateFinish)
-      }</div>
+      }`
     }
   }
 }
 
+const date2DOM = date => {
+  if (!date) return
+  
+  const dateFinish = new Date(date)
+  const numGap = dateFinish.getTime() - dateNow.getTime()
+
+  if (numGap === 0) {
+    return <div className="time">今天</div>
+  } else if (numGap === 1000 * 60 * 60 * 24) {
+    return <div className="time">明天</div>
+  } else if (numGap === - 1000 * 60 * 60 * 24) {
+    return <div className="time overtime">昨天</div>
+  } else if (numGap > 1000 * 60 * 60 * 24) {
+    return <div className="time">{
+      dateFinish.getFullYear() === dateNow.getFullYear() ?
+      dateFormat('M月D日', {}, dateFinish) :
+      dateFormat('YYYY年M月D日', {}, dateFinish)
+    }</div>
+  } else {
+    return <div className="time overtime">{
+      dateFinish.getFullYear() === dateNow.getFullYear() ?
+      dateFormat('M月D日', {}, dateFinish) :
+      dateFormat('YYYY年M月D日', {}, dateFinish)
+    }</div>
+  }
+}
+
+const date2Single = date =>
+  !date ? 0 :
+  new Date(date).getTime() - dateNow.getTime() > 0 ? 1 :
+  new Date(date).getTime() - dateNow.getTime() < 0 ? -1 : 0
+
 export {
   dateFormat,
   date2Chinese,
+  date2DOM,
+  date2Single,
 }
