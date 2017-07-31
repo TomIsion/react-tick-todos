@@ -3,18 +3,20 @@ import {
   Route
 } from 'react-router-dom'
 
-import ListPage from '../views/ListPage/ListPage'
-import DetailPage from '../views/DetailPage/DetailPage'
+import AsyncComponent from './AsyncComponent'
+
+// import ListPage from '../views/ListPage/ListPage'
+// import DetailPage from '../views/DetailPage/DetailPage'
 
 const App = () => <div>
   <Route
     path="/"
     exact
-    component={ListPage}
+    component={AsyncComponent(() => import('../views/ListPage/ListPage'))}
   />
   <Route
     path="/detail/:id"
-    component={DetailPage}
+    component={AsyncComponent(() => import('../views/DetailPage/DetailPage'))}
   />
 </div>
 

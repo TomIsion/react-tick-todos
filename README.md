@@ -140,6 +140,12 @@ React 所需要的数据结构是这样的：
 
 综上，我们根据当前的年、月，就可以渲染出这个 6 * 7 的数组
 
+### 2. 公共 Reducer 的组织
+
+### 3. 样式按需加载（代码按需加载/分离）
+
+参考： http://serverless-stack.com/chapters/code-splitting-in-create-react-app.html
+
 ## Todos
 
 1. CSSTransitionGroup 中存在的问题？子元素的变化卸载也会影响整体的动画

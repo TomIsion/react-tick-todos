@@ -128,7 +128,7 @@ class TodoItem extends Component {
               </svg>
             </div>
           }
-          <p>{ props.summarize }</p>      
+          <p>{ props.summarize }</p>
         </div>
         <div className="react-icon more-icon">
         </div>
