@@ -31,7 +31,7 @@ class CaldenarTextPanel extends Component {
 
     this.props.handleChangeCalendar && this.props.handleChangeCalendar({
       id: this.props.id,
-      endDate: date,
+      endTime: date,
     })
   }
 

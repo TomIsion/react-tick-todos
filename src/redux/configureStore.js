@@ -5,6 +5,8 @@ import {
   applyMiddleware,
 } from 'redux'
 
+import { composeWithDevTools } from 'redux-devtools-extension'
+
 import rootReducer from './reducers'
 
 import {
@@ -16,10 +18,20 @@ const reducer = combineReducers({
   router: routerReducer,
 })
 
+const saveMiddleWare = store => next => action => {
+  const returnValue = next(action)
+
+  window.localStorage.setItem('tickCache', encodeURIComponent(JSON.stringify(store.getState().list)))
+
+  return returnValue
+}
+
 export default function configureStore(initialState) {
   const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeWithDevTools(
+      applyMiddleware(saveMiddleWare),
+    ),
   )
 
   return store

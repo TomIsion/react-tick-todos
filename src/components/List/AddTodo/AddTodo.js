@@ -38,7 +38,7 @@ class AddTodo extends Component {
   }
 
   handleChangePlusInfo(single, info) {
-    this.plusInfo[~single ? 'priorityLevel' : 'endTime'] = info
+    this.plusInfo[~single ? 'priorityLevel' : 'endTime'] = ~single ? info.priorityLevel : info
     this.domInput.focus()
   }
 

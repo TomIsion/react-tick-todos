@@ -24,7 +24,7 @@ export const changeTodoFinishPercent = payload => ({
 })
 
 const changeTodoHeaderReducer = (state, action) => {
-  const arrTodos = JSON.parse(JSON.stringify(state)).arrTodos
+  let arrTodos = JSON.parse(JSON.stringify(state)).arrTodos
 
   let indexOfTodo = -1
   let itemTodo = undefined
@@ -42,7 +42,7 @@ const changeTodoHeaderReducer = (state, action) => {
     case CHANGE_TODO_DATE:
       indexOfTodo = state.arrTodos.findIndex(item => item.id === action.payload.id)
       itemTodo = state.arrTodos.find(item => item.id === action.payload.id)
-      itemTodo.endDate = action.payload.endDate
+      itemTodo.endTime = action.payload.endTime
       arrTodos.splice(indexOfTodo, 1, itemTodo)
       return {
         ...state,
