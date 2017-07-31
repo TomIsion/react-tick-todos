@@ -38,8 +38,9 @@ class TodoItem extends Component {
     event.preventDefault()
   }
 
-  handleClick(event) {
+  handleClick(id) {
     // 跳转终页
+    this.props.handleClick(id)
   }
 
   componentDidMount() {
@@ -74,7 +75,7 @@ class TodoItem extends Component {
         onDragStart={ this.handleDragStart }
         onDrop={ this.handleDrop }
         onDragOver={ this.handleDragOver }
-        onClick={ this.handleClick }
+        onClick={ () => this.handleClick(props.id) }
       >
         <div className="react-icon move-icon">
           <svg

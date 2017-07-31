@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { createNewTodo, changeShowFinished, changeSortType, changeTodoOrder } from './ListPageRedux'
+import { createNewTodo, changeShowFinished, changeSortType, changeTodoOrder, jumpToDetail } from './ListPageRedux'
 
 import './ListPage.css'
 
@@ -20,6 +20,7 @@ class ListPage extends Component {
       changeShowFinished,
       changeSortType,
       changeTodoOrder,
+      jumpToDetail,
     } = this.props
 
     return (
@@ -38,6 +39,7 @@ class ListPage extends Component {
           <ListTodos
             {...list}
             changeTodoOrder={ changeTodoOrder }
+            handleClick={ jumpToDetail }
           />
         </main>
       </div>
@@ -52,6 +54,7 @@ ListPage.propTypes = {
   changeShowFinished: PropTypes.func,
   changeSortType: PropTypes.func,
   changeTodoOrder: PropTypes.func,
+  jumpToDetail: PropTypes.func,
 }
 
 // export default ListPage
@@ -62,4 +65,5 @@ export default connect(state => ({
   changeShowFinished: bindActionCreators(changeShowFinished, dispatch),
   changeSortType: bindActionCreators(changeSortType, dispatch),
   changeTodoOrder: bindActionCreators(changeTodoOrder, dispatch),
+  jumpToDetail: bindActionCreators(jumpToDetail, dispatch),
 }))(ListPage)

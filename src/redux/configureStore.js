@@ -5,13 +5,20 @@ import {
   applyMiddleware,
 } from 'redux'
 
+import createHistory from 'history/createBrowserHistory'
+
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import rootReducer from './reducers'
 
 import {
   routerReducer,
+  routerMiddleware,
 } from 'react-router-redux'
+
+export const history = createHistory()
+
+const middles = routerMiddleware(history)
 
 const reducer = combineReducers({
   ...rootReducer,
@@ -30,7 +37,7 @@ export default function configureStore(initialState) {
   const store = createStore(
     reducer,
     composeWithDevTools(
-      applyMiddleware(saveMiddleWare),
+      applyMiddleware(middles, saveMiddleWare),
     ),
   )
 

@@ -54,6 +54,7 @@ class CalendarPanel extends Component {
   }
 
   componentWillUnMount() {
+    console.log('CalendarPanel will unmount')
     document.body.removeEventListener('click', this.handleGlobalClick)
   }
 

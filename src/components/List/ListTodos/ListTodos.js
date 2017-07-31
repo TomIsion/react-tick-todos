@@ -14,6 +14,7 @@ class ListTodos extends Component {
             <TodoItem
               key={`${index}-${item.id}`}
               changeTodoOrder={ this.props.changeTodoOrder }
+              handleClick={ this.props.handleClick }
               { ...item }
             />
           )
@@ -26,6 +27,7 @@ class ListTodos extends Component {
 ListTodos.propTypes = {
   arrTodos: PropTypes.array,
   changeTodoOrder: PropTypes.func,
+  handleClick: PropTypes.func,
 }
 
 export default ListTodos

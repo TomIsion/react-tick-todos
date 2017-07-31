@@ -1,4 +1,9 @@
+import { push } from 'react-router-redux'
+
 const CHANGE_TODO_ORDER = 'CHANGE_TODO_ORDER'
+const JUMP_TO_DETAIL = 'JUMP_TO_DETAIL'
+
+export const jumpToDetail = id => push(`/detail/${id}`)
 
 export const changeTodoOrder = (changeId, referenceId) => ({
   type: CHANGE_TODO_ORDER,

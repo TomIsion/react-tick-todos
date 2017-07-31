@@ -1,6 +1,6 @@
 import headerPartReducer, { createNewTodo } from '../../components/List/AddTodo/AddTodoRedux'
 import navPartReducer, { changeShowFinished, changeSortType } from '../../components/List/Navigation/NavigationRedux'
-import listPartReducer, { changeTodoOrder } from '../../components/List/ListTodos/ListTodosRedux'
+import listPartReducer, { changeTodoOrder, jumpToDetail } from '../../components/List/ListTodos/ListTodosRedux'
 
 export default (state, action) => {
   let _state = headerPartReducer(state, action)
@@ -10,4 +10,4 @@ export default (state, action) => {
   return _state
 }
 
-export { createNewTodo, changeShowFinished, changeSortType, changeTodoOrder }
+export { createNewTodo, changeShowFinished, changeSortType, changeTodoOrder, jumpToDetail }

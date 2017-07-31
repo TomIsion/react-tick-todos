@@ -53,6 +53,7 @@ class AddTodo extends Component {
   }
 
   componentWillUnmount() {
+    console.log('AddTodos will unmount')
     document.removeEventListener('click', this.changeSingleHighLight)
   }
 
