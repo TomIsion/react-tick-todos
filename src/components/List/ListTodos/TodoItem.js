@@ -13,10 +13,6 @@ class TodoItem extends Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      singleHover: false,
-    }
-
     this.handleDragStart = this.handleDragStart.bind(this)
     this.handleDrop = this.handleDrop.bind(this)
     this.handleDragOver = this.handleDragOver.bind(this)
@@ -72,17 +68,12 @@ class TodoItem extends Component {
   render() {
     const props = this.props
 
-    const {
-      singleHover,
-    } = this.state
-
     return (
       <li
         draggable="true"
         onDragStart={ this.handleDragStart }
         onDrop={ this.handleDrop }
         onDragOver={ this.handleDragOver }
-        className={ singleHover && 'chosen' }
         onClick={ this.handleClick }
       >
         <div className="react-icon move-icon">
@@ -112,12 +103,12 @@ class TodoItem extends Component {
             date2DOM(props.endTime)
           }
           {
-            props.percent &&  <div className="finish-status">
+            props.percent > 0 ? <div className="finish-status">
               <canvas width="12" height="12" ref={ ref => this.finishedCanvas = ref }></canvas>
-            </div>
+            </div> : null
           }
           {
-            props.type && <div className="icon-text">
+            props.type ? <div className="icon-text">
               <svg
                 viewBox="-2 -4 16 16"
                 width="100%"
@@ -126,7 +117,7 @@ class TodoItem extends Component {
                 <path d="M9.5-1h-7C1.7-1 1-.3 1 .5v7C1 8.3 1.7 9 2.5 9h7c.8 0 1.5-.7 1.5-1.5v-7C11-.3 10.3-1 9.5-1zm.5 8.5c0 .3-.2.5-.5.5h-7c-.3 0-.5-.2-.5-.5v-7c0-.3.2-.5.5-.5h7c.3 0 .5.2.5.5v7z"></path>
                 <path d="M3 3h6v1H3zM3 5h3v1H3zM3 1h6v1H3z"></path>
               </svg>
-            </div>
+            </div> : null
           }
           <p>{ props.summarize }</p>
         </div>
