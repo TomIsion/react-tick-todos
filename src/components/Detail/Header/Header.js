@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import FinishPercentScale from '../FinishPercentScale/FinishPercentScale'
 import FinishedCheckBox from '../FinishedCheckbox/FinishedCheckbox'
 import CalendarTextPanel from '../CalendarTextPanel/CalendarTextPanel'
 import PriorityPanel from '../../Common/PriorityPanel/PriorityPanel'
@@ -20,10 +21,16 @@ class Header extends Component {
       changeTodoStatus,
       changeTodoDate,
       changeTodoPriority,
+      changeTodoFinishPercent,
     } = this.props
 
     return (
       <header>
+        <FinishPercentScale
+          id={ id }
+          percent={ percent }
+          handlePercentChange={ changeTodoFinishPercent }
+        />
         <div className="icon-back">
           <svg
             viewBox="-389 291 20 20"

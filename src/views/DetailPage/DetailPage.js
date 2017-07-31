@@ -9,6 +9,7 @@ import {
   changeTodoStatus,
   changeTodoDate,
   changeTodoPriority,
+  changeTodoFinishPercent,
 } from './DetailPageRedux'
 
 class DetailPage extends Component {
@@ -34,6 +35,7 @@ DetailPage.propTypes = {
   changeTodoStatus: PropTypes.func,
   changeTodoDate: PropTypes.func,
   changeTodoPriority: PropTypes.func,
+  changeTodoFinishPercent: PropTypes.func,
 }
 
 export default connect((state, ownProps) => ({
@@ -42,4 +44,5 @@ export default connect((state, ownProps) => ({
   changeTodoStatus: bindActionCreators(changeTodoStatus, dispatch),
   changeTodoDate: bindActionCreators(changeTodoDate, dispatch),
   changeTodoPriority: bindActionCreators(changeTodoPriority, dispatch),
+  changeTodoFinishPercent: bindActionCreators(changeTodoFinishPercent, dispatch),
 }))(DetailPage)

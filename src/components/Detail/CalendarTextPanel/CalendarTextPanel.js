@@ -16,7 +16,7 @@ class CaldenarTextPanel extends Component {
     super(props)
 
     this.state = {
-      date: undefined,
+      date: this.props.date,
       isShow: false,
     }
 
@@ -113,6 +113,7 @@ class CaldenarTextPanel extends Component {
 CaldenarTextPanel.propTypes = {
   id: PropTypes.number,
   handleChangeCalendar: PropTypes.func,
+  date: PropTypes.string,
   className: PropTypes.string,
 }
 

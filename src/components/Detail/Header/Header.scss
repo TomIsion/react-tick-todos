@@ -4,6 +4,7 @@ header {
   background-color: #fdfdfd;
   border-bottom: 1px solid rgba(0, 0, 0, .06);
   padding: 12px 14px;
+  position: relative;
 
   .icon-back {
     float: left;
@@ -12,6 +13,8 @@ header {
     fill: rgba(0, 0, 0, .36);
     margin-top: 7px;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
   }
 
   .priority-panel {
@@ -20,6 +23,7 @@ header {
     height: 24px;
     margin-top: 5px;
     position: relative;
+    z-index: 2;
 
     .priority-wrapper {
       right: -50px;

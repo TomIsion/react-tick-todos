@@ -5,6 +5,8 @@
   fill: rgba(0, 0, 0, .24);
   margin: 9px 30px 0 15px;
   cursor: pointer;
+  position: relative;
+  z-index: 2;
 
   &:hover {
     svg {
